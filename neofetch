@@ -4091,7 +4091,8 @@ print_ascii() {
     ascii_data="${ascii_data//\$\{c5\}/$c5}"
     ascii_data="${ascii_data//\$\{c6\}/$c6}"
 
-    ((text_padding=ascii_len+gap))
+    effective_len=${custom_ascii_width:-$ascii_len}
+    ((text_padding=effective_len+gap))
     printf '%b\n' "$ascii_data${reset}"
     LC_ALL=C
 }
